@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	
+	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/main*" access="ROLE_USER"/>
+		<sec:form-login
+			login-page="/login.html"
+			default-target-url="/main.html"
+			authentication-failure-url="/login.html?login_error=1"
+		/>
+		<sec:logout logout-success-url="/login.html" delete-cookies="JSESSIONID"/>
+	</sec:http>
+
+			
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider>
+			<sec:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="
+					select username, password, enabled 
+					from all_user where username=?"
+				authorities-by-username-query="
+					select a.username, b.authority 
+					from all_user a, user_roles b 
+					where a.id=b.id and a.username=?"
+			/>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+</beans>
