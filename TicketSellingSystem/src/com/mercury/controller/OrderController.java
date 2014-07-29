@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mercury.beans.Order;
-import com.mercury.beans.OrderInfo;
+//import com.mercury.beans.OrderInfo;
 import com.mercury.service.OrderService;
 
 @Controller

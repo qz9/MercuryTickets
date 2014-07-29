@@ -1,0 +1,61 @@
+#personalInfo {
+	margin-top: 10px;
+	float: left;
+	width: 30%;
+}
+
+#personalInfo fieldset {
+	padding-bottom: 20px;
+}
+
+#personalInfo fieldset div {
+	font-family: Arial, Verdana;
+	font-size: 13px;
+	margin: 8px 0 10px 30px;
+	color: black;
+}
+
+#transactions, #cards {
+	margin-top: 10px;
+	float: right;
+	width: 67%;
+}
+
+#transaction_payment_wrapper fieldset {
+	border-radius: 10px;
+	color: grey;
+}
+
+#transaction_payment_wrapper legend {
+	font-family: Arial, Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+	color: grey;
+}
+
+#personalInfo label {
+	font-family: Arial, Verdana;
+	float: left;
+	width: 70px;
+	margin-right: 10px;
+	margin-top: 8px;
+	margin-left: 30px;
+	color: black;
+	font-weight: normal;
+	font-size: 13px;
+}
+
+#transaction_payment_wrapper input[type=text], input[type=number] {
+	margin: 5px 0px 5px 0px;
+	width: 120px;
+}
+
+#no_card_notice, #no_order_notice {
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	font-family: Arial, Verdana;
+	color: black;
+	margin-top: 15px;
+}

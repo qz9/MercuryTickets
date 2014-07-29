@@ -2,11 +2,14 @@ package com.mercury.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.mercury.beans.User;
 import com.mercury.dao.UserDao;
+import com.mercury.utils.HibernateUtil;
 
 public class UserDaoImpl implements UserDao{
 	private HibernateTemplate template ;
@@ -15,9 +18,18 @@ public class UserDaoImpl implements UserDao{
 		template = new HibernateTemplate(sessionFactory) ;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public User findByName(String name){
-		return (User)template.load(User.class, name) ;
+		String hql = "from User where username = '" + name + "'";
+		Session session = HibernateUtil.currentSession();
+		Query query = session.createQuery(hql);
+		List<User> list = query.list();
+		if (list.size() != 1) {
+			return null;
+		} else {
+			return list.get(0);
+		}
 	}
 	
 	@Override

@@ -7,4 +7,6 @@ public interface CardDao {
 	public void save(Card card) ;
 	public void delete(Card card) ;
 	public void update(Card card) ;
+	public Card getCardByNumber(String cardNum) ;
+	public void updateCardById(Card card, String cardNum) ;
 }

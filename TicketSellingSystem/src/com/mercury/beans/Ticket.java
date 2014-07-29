@@ -53,7 +53,8 @@ public class Ticket {
 		this.id = id;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+//	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@Cascade({CascadeType.SAVE_UPDATE})
 	@JoinColumn(name="from_id", nullable=false)
 	public Station getFromStation() {
@@ -63,7 +64,8 @@ public class Ticket {
 		this.fromStation = fromStation;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+//	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@Cascade({CascadeType.SAVE_UPDATE})
 	@JoinColumn(name="to_id", nullable=false)
 	public Station getToStation() {
@@ -73,7 +75,8 @@ public class Ticket {
 		this.toStation = toStation;
 	}
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="ticket")
+//	@OneToMany(fetch=FetchType.LAZY, mappedBy="ticket")
+	@OneToMany(mappedBy="ticket")
 	public Set<Order> getOrders() {
 		return orders;
 	}

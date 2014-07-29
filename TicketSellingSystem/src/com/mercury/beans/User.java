@@ -24,6 +24,9 @@ public class User{
 	private String lastName;
 	private String password;
 	
+	private int enabled = 1;
+	private String authority = "ROLE_USER";
+	
 	// Address fields
 	private String zip_code;
 	private String street;
@@ -174,12 +177,29 @@ public class User{
 		this.cards.remove(card);
 	}
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+//	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+	@OneToMany(mappedBy="user")
 	public Set<Order> getOrders() {
 		return orders;
 	}
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
+	}
+	
+	@Column(name="enabled")
+	public int getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+	
+	@Column(name="authority")
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 	
 	public void addOrder(Order order) {

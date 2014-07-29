@@ -1,0 +1,34 @@
+#new_card {
+    font-family: Arial, Verdana;
+    font-size: 15px;
+    color: black;
+    margin-left: 30px;
+}
+
+#warning_message {
+    color: red;
+    font-family: Arial, Verdana;
+    font-size: 15px;
+    margin: 10px 0px 10px 30px;
+    height: 17px;
+}
+
+#new_card_div label {
+    font-family: Arial, Verdana;
+    float: left;
+    width: 120px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-left: 30px;
+    color: black;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+#new_card_div select {
+    margin: 5px 0px 5px 0px;
+}
+
+#new_card_buttons {
+    margin: 10px 0px 10px 170px;
+}

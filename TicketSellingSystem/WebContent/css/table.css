@@ -1,0 +1,61 @@
+#transaction_payment_wrapper table {
+	border-collapse: collapse;
+	margin: 10px 0 10px 0;
+	font-family: Arial, Verdana;
+	font-size: 13px;
+	border-spacing: 2px;
+	border-color: grey;
+	color: black;
+}
+
+#transaction_payment_wrapper table, td, th {
+	border: 1px solid #ccc;
+	padding: 6px;
+	position: relative;
+}
+
+#transaction_payment_wrapper th {
+	text-align: left;
+	color: white;
+	font-weight: bold;
+	background: #333;
+	height: 35px;
+}
+
+#transaction_payment_wrapper tr:nth-of-type(even) {
+	background: #eee;
+}
+
+#transaction_payment_wrapper table {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#cards table input[type='text'] {
+	width: 110px;
+	margin: 0px;
+}
+
+#cards table input[name='exYear'] {
+	width: 30px;
+}
+
+#cards table tr {
+	height: 35px;
+}
+
+#cards table select[name='card_type'] {
+	width: 100px;
+}
+
+
+.unreturnable td:before {
+	content: " ";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	border-bottom: 1px solid #555;
+	width: 100%;
+}

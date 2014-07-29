@@ -1,0 +1,54 @@
+.line {
+	max-width: 500px;
+	margin: 0 auto;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	padding: 5px 15px 5px 15px;
+	border-radius: 20px;
+	border: 5px solid;
+	border-color: #99ba92;
+}
+table {
+	margin-left: 100px;
+}
+.alert {
+	color: #ff0000;
+}
+.back {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+input[type="text"] {
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+input[type="password"] {
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+input[type="email"] {
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+#sl {
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+.butt {
+	font-weight: normal;
+ 	text-align: center;
+  	border: 1px solid transparent;
+  	background-color: #0066cc;
+  	border-color: #357ebd;
+  	padding: 5px 8px;
+  	font-size: 18px;
+  	line-height: 1.33;
+  	border-radius: 6px;
+	margin-left: 85px;
+	margin-bottom: 15px;
+	width: 100px;
+}
+span {
+	color: red;
+	margin-left: 5px;
+	display: none;
+}

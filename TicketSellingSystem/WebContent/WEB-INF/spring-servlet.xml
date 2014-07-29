@@ -18,11 +18,23 @@
         <property name="suffix" value=".jsp" />
     </bean>
     
+    <bean id="transactionController" class="com.mercury.controller.TransactionController">
+    	<property name="os" ref="OrderService"></property>
+    </bean>
+    <bean id="paymentController" class="com.mercury.controller.PaymentController">
+    	<property name="cs" ref="CardService"></property>
+    </bean>
+    
     <bean id="orderController" class="com.mercury.controller.OrderController">
     	<property name="os" ref="OrderService"/>
     	<property name="viewPage" value="transaction"/>
     </bean>
-    <bean id="loginController" class="com.mercury.controller.LoginController" />
+    <bean id="loginController" class="com.mercury.controller.LoginController">
+   		<property name="js" ref="javaMailService"/>
+    	<property name="us" ref="UserService"/>
+    	<property name="viewPage" value="login"/>
+    </bean>
+    <bean id="javaMailService" class="com.mercury.service.JavaMailService"></bean>
     
     <bean id="TicketService" class="com.mercury.service.TicketService">
     	<property name="td" ref="TicketDao"/>

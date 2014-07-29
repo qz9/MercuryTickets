@@ -48,7 +48,8 @@ public class Order {
 		this.id = id;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+//	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@Cascade({CascadeType.SAVE_UPDATE})
 	@JoinColumn(name="user_id")
 	public User getUser() {
@@ -58,7 +59,8 @@ public class Order {
 		this.user = user;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+//	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@Cascade({CascadeType.SAVE_UPDATE})
 	@JoinColumn(name="ticket_id")
 	public Ticket getTicket() {
