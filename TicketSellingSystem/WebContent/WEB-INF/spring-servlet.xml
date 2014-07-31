@@ -18,6 +18,8 @@
         <property name="suffix" value=".jsp" />
     </bean>
     
+    <bean id="statController" class="com.mercury.controller.StatisticsController" />
+    
     <bean id="transactionController" class="com.mercury.controller.TransactionController">
     	<property name="os" ref="OrderService"></property>
     </bean>

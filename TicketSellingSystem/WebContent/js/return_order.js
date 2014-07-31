@@ -16,4 +16,18 @@ $(document).ready(function() {
 			}
 		}
 	});
+	
+	$(".ads_links").click(function() {
+		var id = $(this).attr("id");
+		var idNum = id.replace(/ads_links_/i, "");
+		if (idNum == 1) {
+			window.open("http://www.amtrak.com/");
+		} else if (idNum == 2) {
+			window.open("http://www.njtransit.com/");
+		} else if (idNum == 3) {
+			window.open("http://www.metrolinktrains.com/");
+		}
+		$form = $("<form method='post' action='stat.html'><input name='adsId' value='"+idNum+"'/></form>");
+		$form.appendTo(document.body).submit();
+	});
 });

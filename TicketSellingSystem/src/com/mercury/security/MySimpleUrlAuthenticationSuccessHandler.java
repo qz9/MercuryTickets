@@ -17,6 +17,9 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.mercury.dao.StatisticsDao;
+import com.mercury.dao.impl.StatisticsDaoImpl;
+
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
  
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -60,6 +63,8 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         	String username = mud.getUsername();
         	Timestamp loginTime = new Timestamp(new Date().getTime());
         	System.out.println(username + "\t" + loginTime);
+        	StatisticsDao statd = new StatisticsDaoImpl();
+        	statd.newStatitcs(username, new Timestamp(new Date().getTime()));
             return "/main.html";
         } else if (isAdmin) {
             return "/admin.html";

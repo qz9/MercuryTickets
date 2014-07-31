@@ -2,6 +2,8 @@ package com.mercury.dao.impl;
 
 import java.util.*;
 import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
+
 import com.mercury.utils.*;
 import com.mercury.beans.Statistics;
 import com.mercury.beans.Ads;
@@ -17,7 +19,6 @@ public class StatisticsDaoImpl implements StatisticsDao {
 		Session session = HibernateUtil.currentSession();
 		String hql = "from Ads";
 		List<Ads> listAds = session.createQuery(hql).list();
-		System.out.println(listAds.size());
 		for (Ads a:listAds) {
 			Transaction tx = session.beginTransaction();
 			Statistics stat = new Statistics();
@@ -25,21 +26,59 @@ public class StatisticsDaoImpl implements StatisticsDao {
 			stat.setCount(0);
 			stat.setUsername(username);
 			stat.setLoginTime(startTime);
-			stat.setLoginTime(null);
+			stat.setLogoutTime(null);
 			session.save(stat);
 			tx.commit();
 		}
 		HibernateUtil.closeSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void updateAdsCount(String username, int AdsId) {
-		
+	public void updateAdsCount(String username, int adsId) {
+		Session session = HibernateUtil.currentSession();
+		List<Statistics> list = session.createCriteria(Statistics.class).
+				add(Restrictions.eq("username", username)).
+				add(Restrictions.isNull("logoutTime")).list();
+		if (list.size() != 3) {
+			System.out.println("No such user!");
+			return;
+		} else {
+			for (Statistics s: list) {
+				if (s.getAds().getId() == adsId) {
+					Transaction tx = session.beginTransaction();
+					s.setCount(s.getCount() + 1);
+					session.saveOrUpdate(s);
+					tx.commit();
+				}
+			}
+		}
+		HibernateUtil.closeSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Statistics> queryAll() {
-		return null;
+		Session session = HibernateUtil.currentSession();
+		String hql = "from Statistics order by id";
+		List<Statistics> listStat = session.createQuery(hql).list();
+		HibernateUtil.closeSession();
+		return listStat;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void setLogoutTime(String username, Timestamp logoutTime) {
+		Session session = HibernateUtil.currentSession();
+		List<Statistics> listStat = session.createCriteria(Statistics.class).
+				add(Restrictions.eq("username", username)).list();
+		for (Statistics stat:listStat) {
+			Transaction tx = session.beginTransaction();
+			stat.setLogoutTime(logoutTime);
+			session.saveOrUpdate(stat);
+			tx.commit();
+		}
+		HibernateUtil.closeSession();
 	}
 
 }

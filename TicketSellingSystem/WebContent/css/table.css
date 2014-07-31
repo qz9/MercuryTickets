@@ -26,6 +26,30 @@
 	background: #eee;
 }
 
+#ads_report_table {
+	border-collapse: collapse;
+	margin: 30px 0 0px 30px;
+	font-family: Arial, Verdana;
+	font-size: 13px;
+	border-spacing: 2px;
+	border-color: grey;
+	color: black;
+}
+#ads_report_table table, td, th {
+	border: 1px solid #ccc;
+	padding: 6px;
+	position: relative;
+}
+#ads_report_table th {
+	text-align: left;
+	color: white;
+	font-weight: bold;
+	background: #333;
+}
+#ads_report_table tr:nth-of-type(even) {
+	background: #eee;
+}
+
 #transaction_payment_wrapper table {
 	width: 90%;
 	margin: 0 auto;

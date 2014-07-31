@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 import java.util.*;
 
 public class StatisticsDaoImplTest {
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
@@ -22,12 +21,16 @@ public class StatisticsDaoImplTest {
 		StatisticsDao statd = new StatisticsDaoImpl();
 		statd.newStatitcs("for_test", new Timestamp(new Date().getTime()));
 		
+		statd.updateAdsCount("for_test", 2);
+		statd.updateAdsCount("for_test", 2);
+		statd.updateAdsCount("for_test", 2);
+		
+		statd.updateAdsCount("for_test", 1);
+		
 		session = HibernateUtil.currentSession();
-		hql = "from Statistics";
-		query = session.createQuery(hql);
-		List<Statistics> listStats = query.list();
-		for (Statistics stat:listStats) {
-			System.out.println(stat);
+		List<Statistics> listStat = statd.queryAll();
+		for (Statistics s: listStat) {
+			System.out.println(s + " Ads: " + s.getAds().toString());
 		}
 		
 		HibernateUtil.closeSession();

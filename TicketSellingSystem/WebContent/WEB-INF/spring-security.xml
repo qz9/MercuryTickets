@@ -12,6 +12,8 @@
 		<sec:intercept-url pattern="/main*" access="ROLE_USER"/>
 		<sec:intercept-url pattern="/transaction*" access="ROLE_USER"/>
 		<sec:intercept-url pattern="/payment*" access="ROLE_USER" />
+		<sec:intercept-url pattern="/stat*" access="ROLE_USER" />
+		<sec:intercept-url pattern="/ads_report*" access="ROLE_USER" />
 		<sec:form-login
 			login-page="/login.html"
 			authentication-success-handler-ref="myAuthenticationSuccessHandler"

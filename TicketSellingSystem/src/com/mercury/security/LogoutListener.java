@@ -11,6 +11,9 @@ import org.springframework.security.core.session.SessionDestroyedEvent;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.mercury.dao.StatisticsDao;
+import com.mercury.dao.impl.StatisticsDaoImpl;
+
 @Component
 public class LogoutListener implements ApplicationListener<SessionDestroyedEvent> {
 
@@ -23,6 +26,8 @@ public class LogoutListener implements ApplicationListener<SessionDestroyedEvent
 			String username = ud.getUsername();
 			Timestamp logoutTime = new Timestamp(new Date().getTime());
 			System.out.println("Username: " + username + "\tLogoutTime: " + logoutTime);
+			StatisticsDao statd = new StatisticsDaoImpl();
+			statd.setLogoutTime(username, logoutTime);
 		}
 	}
 

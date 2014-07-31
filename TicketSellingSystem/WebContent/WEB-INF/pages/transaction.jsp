@@ -59,6 +59,12 @@
 					<input type="text" name="zipCode" value="${zipCode }" disabled></input>
 					<div>See your <a href="./payment.html">payment information</a>.</div>
 				</fieldset>
+				<fieldset>
+					<legend>Ads</legend>
+					<a href="javascript:void(0)" class="ads_links" id="ads_links_1"><img src="img/1_amtrak_logo.jpg" width="80%" /></a>
+					<a href="javascript:void(0)" class="ads_links" id="ads_links_2"><img src="img/2_njtransit_logo.jpg" width="80%" /></a>
+					<a href="javascript:void(0)" class="ads_links" id="ads_links_3"><img src="img/3_metrolink_logo.jpg" width="80%" /></a>
+				</fieldset>
 			</div>
 			<div id = "transactions">
 			<fieldset>

@@ -6,6 +6,7 @@
 
 #personalInfo fieldset {
 	padding-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #personalInfo fieldset div {
@@ -58,4 +59,10 @@
 	font-family: Arial, Verdana;
 	color: black;
 	margin-top: 15px;
+}
+
+#personalInfo img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }

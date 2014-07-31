@@ -4,12 +4,14 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="statistics")
@@ -32,11 +34,13 @@ public class Statistics {
 	
 	@Override
 	public String toString() {
-		return "ID: " + id + "\tUserName: " + username
+		return "ID: " + id + "\tUserName: " + username + "\tCount: " + count
 				+ "\tLoginTime: " + loginTime + "\tLogoutTime: " + logoutTime;
 	}
 	
 	@Id
+	@GenericGenerator(name="kaugen", strategy="increment")
+	@GeneratedValue(generator="kaugen")
 	@Column(name="id", unique=true, nullable=false)
 	public int getId() {
 		return id;
