@@ -22,6 +22,7 @@
 	
 	<bean id="myAuthenticationSuccessHandler"
         class="com.mercury.security.MySimpleUrlAuthenticationSuccessHandler" />
+	<bean id="logoutListener" class="com.mercury.security.LogoutListener" />
 
 	<sec:authentication-manager alias="authenticationManager">
 		<sec:authentication-provider>

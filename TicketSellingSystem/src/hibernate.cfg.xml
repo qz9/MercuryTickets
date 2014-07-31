@@ -23,5 +23,7 @@
 		<mapping class="com.mercury.beans.Ticket" />
 		<mapping class="com.mercury.beans.Order" />
 		<mapping class="com.mercury.beans.Station" />
+		<mapping class="com.mercury.beans.Ads" />
+		<mapping class="com.mercury.beans.Statistics"/>
 	</session-factory>
 </hibernate-configuration>

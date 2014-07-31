@@ -18,7 +18,6 @@ public class Order {
 	private int ticketNum;
 	private Timestamp orderTime;
 	
-	
 	public Order() {}
 	public Order (User user, Ticket ticket, Timestamp orderTime,
 			String orderCode, int ticketNum) {

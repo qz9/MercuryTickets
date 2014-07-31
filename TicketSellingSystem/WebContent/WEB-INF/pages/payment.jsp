@@ -8,7 +8,7 @@
 	<link rel='stylesheet' type='text/css' href='css/transaction.css'>
 	<link rel='stylesheet' type='text/css' href='css/table.css'>
 	<link rel='stylesheet' type='text/css' href='css/create_card.css'>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/jquery-1.11.1.js"></script>
 	<script type="text/javascript" src="js/payment.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style type="text/css">

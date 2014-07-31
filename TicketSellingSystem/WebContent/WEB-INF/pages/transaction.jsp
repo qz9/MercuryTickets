@@ -16,7 +16,7 @@
 		border: 1px solid grey;
 	}
 </style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="js/return_order.js"></script>
 <title>Your Transaction</title>
 </head>
