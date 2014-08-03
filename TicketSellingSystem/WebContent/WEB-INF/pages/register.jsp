@@ -25,33 +25,38 @@
 						<tr>
 							<td>Username:</td>
 							<td><input type="text" name="username" class="field"
-								size="15" id="un" /></td>
+								size="15" id="un" maxlength="20"/><span id="userExist">Username exists.</span></td>
 						</tr>
 						<tr>
 							<td>Password:</td>
 							<td><input type="password" name="password" class="field"
-								size="15" id="pwd" /></td>
+								size="15" id="pwd" maxlength="50"/></td>
+						</tr>
+						<tr>
+							<td>Retype password:</td>
+							<td><input type="password" size="15" id="rep" maxlength="50"/><span id="notMatch">
+							Passwords don't match!</span></td>
 						</tr>
 						<tr>
 							<td>Email:</td>
 							<td><input type="email" name="email" class="field" size="15"
-								id="email" onblur="validateEmail()" /> <span id="invalidEmail">Invalid
-									email.</span></td>
+								id="email" onblur="validateEmail()" maxlength="40"/> <span id="invalidEmail">Invalid
+									email.</span><span id="emailExist">Email exists.</span></td>
 						</tr>
 						<tr>
 							<td>Phone:</td>
 							<td><input type="text" name="phone" class="field" size="10"
-								id="phn" /></td>
+								id="phn" maxlength="10"/></td>
 						</tr>
 						<tr>
 							<td>First Name:</td>
 							<td><input type="text" name="firstName" class="field"
-								size="20" id="fn" /></td>
+								size="20" id="fn" maxlength="20"/></td>
 						</tr>
 						<tr>
 							<td>Last Name:</td>
 							<td><input type="text" name="lastName" class="field"
-								size="20" id="ln" /></td>
+								size="20" id="ln" maxlength="20"/></td>
 						</tr>
 					</table>
 				</div>
@@ -65,12 +70,12 @@
 						<tr>
 							<td>Address:</td>
 							<td><input type="text" name="street" class="field" size="30"
-								id="st" /></td>
+								id="st" maxlength="20"/></td>
 						</tr>
 						<tr>
 							<td>City:</td>
 							<td><input type="text" name="city" class="field" size="10"
-								id="city" /></td>
+								id="city" maxlength="20"/></td>
 						</tr>
 						<tr>
 							<td>State:</td>
@@ -131,7 +136,7 @@
 						<tr>
 							<td>Zip Code:</td>
 							<td><input type="text" name="zip_code" class="field"
-								size="5" id="zip" /></td>
+								size="5" id="zip" maxlength="5"/></td>
 						</tr>
 					</table>
 				</div>
@@ -154,14 +159,14 @@
 						<tr>
 							<td>Card Number:</td>
 							<td><input id="vc" type="text" name="cardNumber"
-								class="card" size="16" onblur="wrapperValid()" /> <span
+								class="card" size="16" onblur="wrapperValid()" maxlength="16"/> <span
 								id="invalidCC">Invalid credit card.</span></td>
 						</tr>
 						<tr>
 							<td>Expiration Date:</td>
 							<td><input placeholder="MM" type="text" name="exMonth"
-								class="card" size="2"> <input placeholder="YYYY"
-								type="text" name="exYear" class="card" size="4"></td>
+								class="card" size="2" maxlength="2"> <input placeholder="YYYY"
+								type="text" name="exYear" class="card" size="4" maxlength="4"></td>
 						</tr>
 					</table>
 				</div>
@@ -175,7 +180,31 @@
 
 	<script>
 	$(document).ready(function() {
-		$("#register-form").on("submit", loginValidation);	
+		$("#register-form").on("submit", loginValidation);
+		$("#un").on("blur", function() {
+			$("#userExist").hide();
+			$.ajax({
+				url: "validation",
+				type: "get",
+				dataType: "html",
+				data: {username: $("#un").val()},
+				success: function(response) {
+					var result = response.toString().trim();
+					if (result=="true") {
+						$("#userExist").show(500);
+					}
+				},
+				error: function(msg) {
+					alert(msg);
+				}
+			});
+		});
+		$("#rep").on("blur", function() {
+			$("#notMatch").hide();
+			if ($("#rep").val() != $("#pwd").val()) {
+				$("#notMatch").show(500);
+			}
+		});
 	});
 	
 	function validateEmail() {
@@ -184,9 +213,25 @@
 		var index = email.indexOf("@");
 		if (index <= 0 || index >= email.length-1 || index != email.lastIndexOf("@")){
 			$("#invalidEmail").show(500);
-		};
+			return;
+		}
+		$.ajax({
+			url: "validation",
+			type: "post",
+			dataType: "html",
+			data: {email: $("#email").val()},
+			success: function(response) {
+				var result = response.toString().trim();
+				if (result=="true") {
+					$("#emailExist").show(500);
+				}
+			},
+			error: function(msg) {
+				alert(msg);
+			}
+		});
 			
-	}
+	};
 
 	function loginValidation() {
 		$("#missingInfo").hide();

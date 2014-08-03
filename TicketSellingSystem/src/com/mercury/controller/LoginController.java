@@ -54,7 +54,6 @@ public class LoginController{
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public ModelAndView register(User user, Card card){
-		System.out.println(card.getCardType());
 		card.setUser(user);
 		if (!card.getCardType().equals("None"))
 			user.addCard(card);

@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 	
 	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/admin*" access="ROLE_ADMIN"/>
 		<sec:intercept-url pattern="/main*" access="ROLE_USER"/>
 		<sec:intercept-url pattern="/transaction*" access="ROLE_USER"/>
 		<sec:intercept-url pattern="/payment*" access="ROLE_USER" />
