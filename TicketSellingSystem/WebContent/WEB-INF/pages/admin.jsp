@@ -18,6 +18,8 @@
 	<div style="background-color:#99FFCC;width:500px;">
 	 
 		<div style="margin-bottom:20px">
+		<p><b>User Activities</b></p>
+		Click to see <a href="ads_report.html">user statistics</a>.
 		<p><b>Add Ticket Amount</b></p>
 		Ticket ID: <input type="text" size="1" class="amount" name="id">
 		Amount: <input type="text" size="4" class="amount" name="amount">
@@ -47,7 +49,7 @@
 		Price: <input type="text" size="5" class="ticket" name="price"><br/>
 		Start time: <input type="datetime-local" size="4" class="ticket" name="start"><br/>
 		Arrive time: <input type="datetime-local" size="3" class="ticket" name="arrive">
-		<button id="addTicket">Add</button>
+		<button id="addTicket" style="margin-left:20px">Add</button>
 		</div>
 	
 	</div>
