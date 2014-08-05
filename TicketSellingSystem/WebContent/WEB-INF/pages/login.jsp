@@ -16,8 +16,8 @@
 <div class="line">
 	<form class="form-signin" action="<c:url value='j_spring_security_check'/>" method="POST">
 		<img class="form-signin-heading" src="img/logo.png">
-		<input id="f" type="text" class="form-control" placeholder="Username" name="j_username" id="j_username" required autofocus/>
-		<input id="f" type="password" class="form-control" placeholder="Password" name="j_password" id="j_password" required/>
+		<input class="f" type="text" class="form-control" placeholder="Username" name="j_username" id="j_username" required autofocus/>
+		<input class="f" type="password" class="form-control" placeholder="Password" name="j_password" id="j_password" required/>
 		<p class="alert" style="display:none;" id="wrongCredentials">The username or password supplied is incorrect</p>
 		<button class="loginButton" type="submit">Sign in</button>
 		<div class="form-signin-link">
